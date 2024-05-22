@@ -1,11 +1,20 @@
 import path from 'node:path'
 import type { UserConfig } from 'vite'
 import { defineConfig, mergeConfig } from 'vite'
+import generateFile from 'vite-plugin-generate-file'
 import sharedConfig from './vite.config.shared'
+import figmaManifest from './figma.manifest'
 
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production'
   return mergeConfig(sharedConfig, {
+    plugins: [
+      generateFile({
+        type: 'json',
+        output: './manifest.json',
+        data: figmaManifest,
+      }),
+    ],
     build: {
       minify: isProduction,
       sourcemap: isProduction ? false : 'inline',
