@@ -1,0 +1,14 @@
+{
+  "name": "figma-plugin-vue-vite",
+  "id": "1374656848207600313",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+  "ui": "dist/index.html",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}
