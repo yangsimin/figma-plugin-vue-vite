@@ -4,6 +4,7 @@ import { defineConfig, mergeConfig } from 'vite'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
+import Components from 'unplugin-vue-components/vite'
 import sharedConfig from './vite.config.shared'
 
 export default defineConfig(({ mode }) => {
@@ -13,6 +14,10 @@ export default defineConfig(({ mode }) => {
       vue(),
       viteSingleFile(),
       UnoCSS(),
+      Components({
+        dirs: ['src/ui/components'],
+        dts: true,
+      }),
       {
         name: 'output-root-html',
         enforce: 'post', // 确保在其他插件之后执行
