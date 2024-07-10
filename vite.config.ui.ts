@@ -23,8 +23,9 @@ export default defineConfig(({ mode }) => {
         enforce: 'post', // 确保在其他插件之后执行
         generateBundle(outputOptions, bundle) {
           Object.keys(bundle).forEach((fileName) => {
-            if (!fileName.endsWith('index.html'))
+            if (!/index(?:.dev)?\.html$/.test(fileName)) {
               return
+            }
             bundle[fileName].fileName = 'index.html'
           })
         },
@@ -37,7 +38,7 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: false,
       outDir: path.resolve('dist'),
       rollupOptions: {
-        input: path.resolve('src/ui/index.html'),
+        input: path.resolve(isProduction ? 'src/ui/index.html' : 'src/ui/index.dev.html'),
       },
     },
   } satisfies UserConfig)

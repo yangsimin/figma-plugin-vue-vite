@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Your Figma Plugin",
   "scripts": {
-    "dev": "pnpm watch",
+    "dev": "run-p watch dev:ui",
     "build": "run-s build:*",
     "dev:ui": "vite -c ./vite.config.ui.ts",
     "watch": "run-p watch:*",
